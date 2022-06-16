@@ -55,10 +55,23 @@ function performCalculation() {
     result = parseInt(calculator.firstNumber) - parseInt(calculator.displayNumber);
   }
 
+  // objek yang akan dikirimkan sebagai argumen fungsi putHistory()
+  const history = {
+    firstNumber: calculator.firstNumber,
+    secondNumber: calculator.displayNumber,
+    operator: calculator.operator,
+    result: result,
+  };
+
+  // kalkulator tidak dapat melakukan kalkulasi setelah menambahkan objek dari data history
+
+  putHistory(history);
   calculator.displayNumber = result;
+  renderHistory();
 }
 
 const buttons = document.querySelectorAll(".button");
+
 for (let button of buttons) {
   button.addEventListener("click", function (event) {
     // mendapatkan objek elemen yang diklik
